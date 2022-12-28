@@ -1,5 +1,6 @@
 package com.example.view;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class UserIOConsoleImpl implements UserIO {
@@ -27,6 +28,13 @@ public class UserIOConsoleImpl implements UserIO {
                 return returnValue;
             }
         } while(true);
+    }
+
+    @Override
+    public BigDecimal readBigDecimal(String prompt) {
+        System.out.println(prompt);
+        BigDecimal returnValue = BigDecimal.valueOf(Double.parseDouble(scanner.nextLine()));
+        return returnValue;
     }
 
 	@Override

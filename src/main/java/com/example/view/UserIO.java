@@ -1,5 +1,7 @@
 package com.example.view;
 
+import java.math.BigDecimal;
+
 public interface UserIO {
     
     void print(String msg);
@@ -7,6 +9,8 @@ public interface UserIO {
     int readInt(String prompt);
 
     int readInt(String prompt, int min, int max);
+
+    BigDecimal readBigDecimal(String prompt);
     
     String readString(String prompt);
 }

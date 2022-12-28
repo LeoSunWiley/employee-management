@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.example.dao.EmployeeDao;
@@ -7,7 +8,7 @@ import com.example.model.Employee;
 import com.example.view.EmployeeView;
 
 public class EmployeeController {
-    
+
     private final EmployeeView view;
     private final EmployeeDao employeeDao;
 
@@ -18,6 +19,7 @@ public class EmployeeController {
      * 2) Handle each operation
      * 3) Delegate to EmployeeDao to manage CRUD operations for employees.
      * 4) Delegate to EmployeeView to display operation results.
+     * 
      * @param view
      */
     public EmployeeController(
@@ -43,19 +45,18 @@ public class EmployeeController {
                     addEmployee(); // Add Employee
                     break;
                 case 3:
-                    
+                    retrieveEmployee(); // Retrieve Employee
                     break;
                 case 4:
-                    
+                    updateEmployee(); // Update Employee
                     break;
                 case 5:
-                    
+                    deleteEmployee(); // Delete Employee
                     break;
-                case 6:
-                    break;
+                case 6: // Exit
+                    view.exit();
+                    System.exit(0);
             }
-
-            System.out.println();
         }
     }
 
@@ -67,5 +68,66 @@ public class EmployeeController {
 
     private void addEmployee() {
         view.addEmployeeBanner();
+
+        String firstName = view.getEmployeeFirstName();
+        String lastName = view.getEmployeeLastName();
+        String email = view.getEmployeeEmail();
+        BigDecimal salary = view.getEmployeeSalary();
+
+        Employee employee = new Employee();
+        employee.setFirstName(firstName);
+        employee.setLastName(lastName);
+        employee.setEmail(email);
+        employee.setMonthlySalary(salary);
+
+        employeeDao.addEmployee(employee);
+
+        view.addEmployeeSuccess();
+    }
+
+    private void retrieveEmployee() {
+        view.retrieveEmployeeBanner();
+        int id = view.getEmployeeId();
+        Employee employee = employeeDao.getEmployeeById(id);
+        if (employee != null) {
+            view.displayEmployee(employee);
+        } else {
+            view.invalidEmployee();
+        }
+    }
+
+    private void updateEmployee() {
+        view.updateEmployeeBanner();
+        int id = view.getEmployeeId();
+        Employee employee = employeeDao.getEmployeeById(id);
+        if (employee != null) {
+            view.displayUpdateInstructions();
+            String firstName = view.updateField("First Name", employee.getFirstName());
+            String lastName = view.updateField("Last Name", employee.getLastName());
+            String email = view.updateField("Email", employee.getEmail());
+            BigDecimal salary = view.updateField("Monthly Salary", employee.getMonthlySalary());
+
+            employee.setFirstName(firstName);
+            employee.setLastName(lastName);
+            employee.setEmail(email);
+            employee.setMonthlySalary(salary);
+
+            employeeDao.updateEmployee(employee);
+            view.updateEmployeeSuccess();
+        } else {
+            view.invalidEmployee();
+        }
+    }
+
+    private void deleteEmployee() {
+        view.deleteEmployeeBanner();
+        int id = view.getEmployeeId();
+        Employee employee = employeeDao.getEmployeeById(id);
+        if (employee != null) {
+            employeeDao.deleteEmployeeById(id);
+            view.deleteEmployeeSuccess();
+        } else {
+            view.invalidEmployee();
+        }
     }
 }
