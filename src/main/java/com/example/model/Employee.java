@@ -1,6 +1,7 @@
 package com.example.model;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Employee {
 
@@ -48,5 +49,22 @@ public class Employee {
 
     public void setMonthlySalary(BigDecimal monthlySalary) {
         this.monthlySalary = monthlySalary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id &&
+                firstName.equals(employee.firstName) &&
+                lastName.equals(employee.lastName) &&
+                email.equals(employee.email) &&
+                monthlySalary.equals(employee.monthlySalary);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, monthlySalary);
     }
 }
