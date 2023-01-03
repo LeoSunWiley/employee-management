@@ -3,19 +3,23 @@ package com.example.dao;
 import com.example.model.Employee;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith()
 public class EmployeeDaoTest {
 
-    private final EmployeeDao employeeDao;
+    @Autowired
+    private EmployeeDao employeeDao;
 
-    public EmployeeDaoTest() {
-        this.employeeDao = new EmployeeDaoImpl();
-    }
+    // public EmployeeDaoTest() {
+    //     this.employeeDao = new EmployeeDaoImpl();
+    // }
 
     @BeforeEach
     public void setUp() {

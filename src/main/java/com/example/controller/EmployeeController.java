@@ -3,12 +3,12 @@ package com.example.controller;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.example.dao.EmployeeDao;
-import com.example.dao.EmployeeDaoImpl;
 import com.example.model.Employee;
 import com.example.view.EmployeeView;
-import com.example.view.UserIO;
-import com.example.view.UserIOConsoleImpl;
 
 /**
  * EmployeeController is in the center of employee management.
@@ -18,6 +18,7 @@ import com.example.view.UserIOConsoleImpl;
  * 3) Delegate to EmployeeDao to execute CRUD operations for employees.
  * 4) Delegate to EmployeeView to display operation results.
  */
+@Component
 public class EmployeeController {
 
     private final EmployeeView view;
@@ -28,10 +29,10 @@ public class EmployeeController {
      * @param view
      * @param employeeDao
      */
-    public EmployeeController() {
-        UserIO io = new UserIOConsoleImpl();
-        this.view = new EmployeeView(io);
-        this.employeeDao = new EmployeeDaoImpl();
+    @Autowired
+    public EmployeeController(EmployeeView view, EmployeeDao employeeDao) {
+        this.view = view;
+        this.employeeDao = employeeDao;
     }
 
     /**

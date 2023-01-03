@@ -7,6 +7,9 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.util.*;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class EmployeeDaoImpl implements EmployeeDao {
 
     private static final String EMPLOYEE_FILE = "employees.txt";

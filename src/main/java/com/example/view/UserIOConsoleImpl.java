@@ -3,6 +3,9 @@ package com.example.view;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserIOConsoleImpl implements UserIO {
 
     Scanner scanner = new Scanner(System.in);
