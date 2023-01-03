@@ -4,8 +4,11 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.example.dao.EmployeeDao;
+import com.example.dao.EmployeeDaoImpl;
 import com.example.model.Employee;
 import com.example.view.EmployeeView;
+import com.example.view.UserIO;
+import com.example.view.UserIOConsoleImpl;
 
 /**
  * EmployeeController is in the center of employee management.
@@ -25,11 +28,10 @@ public class EmployeeController {
      * @param view
      * @param employeeDao
      */
-    public EmployeeController(
-            EmployeeView view,
-            EmployeeDao employeeDao) {
-        this.view = view;
-        this.employeeDao = employeeDao;
+    public EmployeeController() {
+        UserIO io = new UserIOConsoleImpl();
+        this.view = new EmployeeView(io);
+        this.employeeDao = new EmployeeDaoImpl();
     }
 
     /**
