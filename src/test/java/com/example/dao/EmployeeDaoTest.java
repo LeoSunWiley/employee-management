@@ -1,25 +1,29 @@
 package com.example.dao;
 
+import com.example.config.ProjectConfig;
 import com.example.model.Employee;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith()
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = ProjectConfig.class)
 public class EmployeeDaoTest {
 
-    @Autowired
-    private EmployeeDao employeeDao;
+    private final EmployeeDao employeeDao;
 
-    // public EmployeeDaoTest() {
-    //     this.employeeDao = new EmployeeDaoImpl();
-    // }
+    @Autowired
+    public EmployeeDaoTest(EmployeeDao employeeDao) {
+        this.employeeDao = employeeDao;
+    }
 
     @BeforeEach
     public void setUp() {
