@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.example.dao.EmployeeDao;
 import com.example.model.Employee;
@@ -18,7 +17,6 @@ import com.example.view.EmployeeView;
  * 3) Delegate to EmployeeDao to execute CRUD operations for employees.
  * 4) Delegate to EmployeeView to display operation results.
  */
-@Component
 public class EmployeeController {
 
     private final EmployeeView view;
@@ -29,7 +27,6 @@ public class EmployeeController {
      * @param view
      * @param employeeDao
      */
-    @Autowired
     public EmployeeController(EmployeeView view, EmployeeDao employeeDao) {
         this.view = view;
         this.employeeDao = employeeDao;

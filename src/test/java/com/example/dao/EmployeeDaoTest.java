@@ -1,6 +1,5 @@
 package com.example.dao;
 
-import com.example.config.ProjectConfig;
 import com.example.model.Employee;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = ProjectConfig.class)
+@ContextConfiguration(locations = {"classpath:employee-management-context.xml"})
 public class EmployeeDaoTest {
 
     private final EmployeeDao employeeDao;
