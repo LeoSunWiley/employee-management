@@ -7,20 +7,23 @@ import com.example.dao.EmployeeDao;
 import com.example.model.Employee;
 import com.example.view.EmployeeView;
 
+/**
+ * EmployeeController is in the center of employee management.
+ * Employee controller does 4 things:
+ * 1) Accept user's input choice.
+ * 2) Handle each operation
+ * 3) Delegate to EmployeeDao to execute CRUD operations for employees.
+ * 4) Delegate to EmployeeView to display operation results.
+ */
 public class EmployeeController {
 
     private final EmployeeView view;
     private final EmployeeDao employeeDao;
 
     /**
-     * Employee controller is the center of employee management.
-     * Employee controller does 4 things:
-     * 1) Accept user's input through io from EmployeeView.
-     * 2) Handle each operation
-     * 3) Delegate to EmployeeDao to manage CRUD operations for employees.
-     * 4) Delegate to EmployeeView to display operation results.
      * 
      * @param view
+     * @param employeeDao
      */
     public EmployeeController(
             EmployeeView view,
@@ -29,6 +32,9 @@ public class EmployeeController {
         this.employeeDao = employeeDao;
     }
 
+    /**
+     * Controls
+     */
     public void run() {
 
         while (true) {

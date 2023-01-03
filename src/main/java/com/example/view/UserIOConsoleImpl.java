@@ -9,17 +9,17 @@ public class UserIOConsoleImpl implements UserIO {
 
     @Override
     public void print(String msg) {
-        System.out.println(msg);        
+        System.out.println(msg);
     }
 
     @Override
-	public int readInt(String prompt) {
-		System.out.println(prompt);
-		int returnValue = Integer.parseInt(scanner.nextLine());
-		return returnValue;
-	}
+    public int readInt(String prompt) {
+        System.out.println(prompt);
+        int returnValue = Integer.parseInt(scanner.nextLine());
+        return returnValue;
+    }
 
-	@Override
+    @Override
     public int readInt(String prompt, int min, int max) {
         do {
             System.out.println(prompt);
@@ -27,7 +27,7 @@ public class UserIOConsoleImpl implements UserIO {
             if (returnValue >= min && returnValue <= max) {
                 return returnValue;
             }
-        } while(true);
+        } while (true);
     }
 
     @Override
@@ -37,10 +37,10 @@ public class UserIOConsoleImpl implements UserIO {
         return returnValue;
     }
 
-	@Override
-	public String readString(String prompt) {
-		System.out.println(prompt);
-		return scanner.nextLine();
-	}
-    
+    @Override
+    public String readString(String prompt) {
+        System.out.println(prompt);
+        return scanner.nextLine();
+    }
+
 }

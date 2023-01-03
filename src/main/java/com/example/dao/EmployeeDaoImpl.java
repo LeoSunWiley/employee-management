@@ -91,6 +91,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 currentEmployee = unmarshalEmployee(currentLine);
                 employees.put(currentEmployee.getId(), currentEmployee);
             }
+
+            count = getNextCount(employees);
         } catch (FileNotFoundException e) {
             throw new EmployeeDaoException("Could not load employee data into memory.", e);
         } finally {
@@ -153,5 +155,19 @@ public class EmployeeDaoImpl implements EmployeeDao {
         employeeText += employee.getEmail() + DELIMITER;
         employeeText += employee.getMonthlySalary();
         return employeeText;
+    }
+
+    /**
+     * Get the next count which is used to set next employee's id.
+     * @param employees
+     * @return
+     */
+    private int getNextCount(Map<Integer, Employee> employees) {
+        if (employees == null || employees.isEmpty()) {
+            return 1;
+        }
+
+        Integer maxEmployeeId = Collections.max(employees.keySet());
+        return ++maxEmployeeId;
     }
 }
