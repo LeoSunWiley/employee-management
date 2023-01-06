@@ -101,7 +101,8 @@ private void listEmployees() {
 ```
 
 ### dao package
-EmployeeDao as a interface defines CRUD apis that can be used to operate against employees. 
+
+EmployeeDao as a interface defines CRUD apis that can be used to operate against employees.
 
 ```java
 public interface EmployeeDao {
