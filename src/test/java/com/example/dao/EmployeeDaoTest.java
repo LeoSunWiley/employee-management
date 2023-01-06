@@ -3,6 +3,7 @@ package com.example.dao;
 import com.example.config.ProjectConfig;
 import com.example.model.Employee;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class EmployeeDaoTest {
     }
 
     @Test
+    @DisplayName("Test case - Add and get a employee")
     public void testAddGetEmployee() {
         Employee employee = new Employee();
         employee.setFirstName("Test First");
@@ -47,6 +49,7 @@ public class EmployeeDaoTest {
     }
 
     @Test
+    @DisplayName("Test case - Get all employees")
     public void testGetAllEmployees() {
         Employee employee = new Employee();
         employee.setFirstName("Test First");
@@ -70,6 +73,7 @@ public class EmployeeDaoTest {
     }
 
     @Test
+    @DisplayName("Test case - Update a employee")
     public void testUpdateEmployee() {
         Employee employee = new Employee();
         employee.setFirstName("Test First");
@@ -94,6 +98,7 @@ public class EmployeeDaoTest {
     }
 
     @Test
+    @DisplayName("Test case - Delete a employee")
     void testDeleteEmployeeById() {
         Employee employee = new Employee();
         employee.setFirstName("Test First");
